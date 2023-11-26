@@ -55,4 +55,18 @@ public class ParseObject {
     public void setInputString(String inputString) {
         this.inputString = inputString;
     }
+
+    @Override
+    public String toString() {
+        String returnString = "Number of states: " + numberOfStates + "\n";
+        returnString += "Sigma: { " + sigma + " }\n";
+        returnString += "Transitions: \n";
+        for (int i = 0; i < transitions.length; i++) {
+            Transition tempTransition = transitions[i];
+            returnString += tempTransition.toString() + "\n";
+        }
+        returnString += "Input String: " + inputString + "\n";
+
+        return returnString;
+    }
 }

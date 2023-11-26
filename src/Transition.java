@@ -40,4 +40,9 @@ public class Transition {
     public void setMove(char move) {
         this.move = move;
     }
+
+    @Override
+    public String toString() {
+        return nextState + "," + writeSymbol + "," + move;
+    }
 }
