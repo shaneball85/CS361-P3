@@ -1,3 +1,5 @@
+package tm;
+
 public class ParseObject {
     private int numberOfStates;
     private int sigma;
