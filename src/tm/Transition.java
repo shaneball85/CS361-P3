@@ -1,7 +1,7 @@
 package tm;
 
 /**
- * Author: Shane Ball
+ * @Author Shane Ball
  * CS 361 Fall 2023
  * Project 3
  *
@@ -9,9 +9,9 @@ package tm;
  * transition of the turing machine. These are built one by one as the given txt file is parsed.
  */
 public class Transition {
-    private int nextState;
-    private int writeSymbol;
-    private char move;
+    private int nextState; // Stores the label of the next state that will be reached if the transition is taken
+    private int writeSymbol; // Stores the symbol that will be written to the tape if the transition is taken
+    private char move; // Stores the direction the head will move over the tape if the transition is taken
 
     public Transition(int next, int write, char move) {
         this.nextState = next;
@@ -44,6 +44,9 @@ public class Transition {
     }
 
     @Override
+    /**
+     * @return a String object that represents the characteristics of a transition exactly as shown in the .txt files
+     */
     public String toString() {
         return nextState + "," + writeSymbol + "," + move;
     }
