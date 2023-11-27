@@ -13,67 +13,47 @@ public class FileParser {
         this.filePath = filePath;
     }
 
-    private int lineCount() {
-        long lineCountLong = 0;
+    private int countLines() throws IOException {
         try (Stream<String> stream = Files.lines(Paths.get(filePath))) {
-            lineCountLong = stream.count();
-        } catch (IOException e) {
-            e.printStackTrace();
+            return (int) stream.filter(line -> line.contains(",")).count();
         }
-        int lineCountInt = (int) lineCountLong - 2;
-        return lineCountInt;
     }
 
     public ParseObject parseFile() {
-        int lineCount = lineCount();
-        ParseObject parseObject = new ParseObject(lineCount);
+        int numberOfLines;
+        try {
+            numberOfLines = countLines();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        ParseObject parseObject = new ParseObject(numberOfLines);
 
         File file = new File(filePath);
-        int onLine = 0;
         try {
             Scanner scanner = new Scanner(file);
+            parseObject.setNumberOfStates(Integer.parseInt(scanner.nextLine()));
+            parseObject.setSigma(Integer.parseInt(scanner.nextLine()));
 
-            while (scanner.hasNextLine()) {
+            for (int i = 0; i < numberOfLines; i++) {
                 String line = scanner.nextLine();
-
-                if (onLine == 0) {
-                    parseObject.setNumberOfStates(Integer.parseInt(line));
-                }
-                if (onLine == 1) {
-                    parseObject.setSigma(Integer.parseInt(line));
-                }
-                if (onLine > 1) {
-                    Scanner lineScanner = new Scanner(line);
-                    lineScanner.useDelimiter(",");
-
-                    int commaCount = 0;
-                    int nextState = 0;
-                    int writeSymbol = 0;
-                    char move = '0';
-
-                    while (lineScanner.hasNext()) {
-                        String segment = lineScanner.next();
-
-                        if (commaCount == 0) {
-                            nextState = Integer.parseInt(segment);
-                        }
-                        if (commaCount == 1) {
-                            writeSymbol = Integer.parseInt(segment);
-                        }
-                        if (commaCount == 2) {
-                            move = segment.charAt(0);
-                        }
-                        commaCount++;
-                    }
-                    Transition tempTransition = new Transition(nextState, writeSymbol, move);
-                    parseObject.addTransition(tempTransition);
-                }
-                onLine++;
+                String[] segments = line.split(",");
+                int nextState = Integer.parseInt(segments[0]);
+                int writeSymbol = Integer.parseInt(segments[1]);
+                char move = segments[2].charAt(0);
+                Transition tempTransition = new Transition(nextState, writeSymbol, move);
+                parseObject.addTransition(tempTransition);
             }
+
+            if (scanner.hasNextLine()) {
+                parseObject.setInputString(scanner.nextLine());
+            }
+
+            scanner.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         return parseObject;
     }
-
 }
