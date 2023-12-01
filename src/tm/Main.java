@@ -11,6 +11,8 @@ public class Main {
 
         TouringMachine file0Machine = new TouringMachine(textParse);
 
+        System.out.println("Entering the machine's toString");
+
         System.out.println(file0Machine);
     }
 }
