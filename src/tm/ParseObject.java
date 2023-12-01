@@ -48,8 +48,37 @@ public class ParseObject {
         return transitions;
     }
 
+    /**
+     * Get the transition at the provided index in the transitions array
+     * @param index
+     * @return Transition
+     */
     public Transition getTransitionAtIndex(int index) {
         return transitions[index];
+    }
+
+    /**
+     * Get a smaller Transition[] from the parseObject's Transition[]. Used when initializing a State to set the
+     * transitions specific to that State
+     * @param startIndex in the parseObject's Transition[]
+     * @param endIndex in the parseObject's Transition[]
+     * @return a subset Transition[] of the parseObject's Transition[]
+     */
+    public Transition[] getTransitionsInRange(int startIndex, int endIndex) {
+        int transitionsLength = endIndex - startIndex + 1; // Set the size of the subset array
+
+        Transition[] returnTransitions = new Transition[transitionsLength];
+
+        /**
+         * Loop through the parseObject's Transition[] for as many iterations as the length of the subarray.
+         * Get the transitions from the start index to the end index by using the startIndex and increment it
+         * each pass through the loop until it equals the endIndex.
+         */
+        for (int i = 0; i < transitionsLength; i++) {
+            returnTransitions[i] = transitions[startIndex];
+            startIndex++;
+        }
+        return returnTransitions;
     }
 
     public void setTransitions(Transition[] transitions) {
