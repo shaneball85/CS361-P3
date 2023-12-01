@@ -13,6 +13,11 @@ public class State {
         }
     }
 
+    public State(Transition[] transitions) {
+        this.transitions = transitions;
+        isFinal = false;
+    }
+
     public Transition[] getTransitions() {
         return transitions;
     }
@@ -38,7 +43,7 @@ public class State {
         String returnString = "";
         for (int i = 0; i < transitions.length; i++) {
             if (isFinal != true) {
-                returnString += "Transition " + i + 1 + " is " + transitions[i] + "\n";
+                returnString += "Transition " + (i + 1) + " is " + transitions[i] + "\n";
             } else {
                 returnString += "Final state reached. No more transitions\n";
             }
