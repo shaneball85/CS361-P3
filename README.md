@@ -7,7 +7,7 @@ The purpose of this project is to create a program that takes a single command l
 Overall this project was not too bad. There was a lot of coding involved. We ran into some issues with loading transitions for each state. We realized part of the problem was a check we had for finalState and so it was just not adding any of the transitions at all. We also had some time issues on the last text file, but were able to resolve those too by switching from a regular linked list to a doubly linked list, where we had a pointer value for the current node.
 
 ## Required Files
-<p>TouringMachine.java<br>
+<p>TuringMachine.java<br>
 TMSimulator.java<br>
 Transition.java<br>
 State.java<br>
