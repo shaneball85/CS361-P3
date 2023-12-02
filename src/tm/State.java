@@ -22,6 +22,10 @@ public class State {
         return transitions;
     }
 
+    public Transition getTransitionAtIndex(int index) {
+        return transitions[index];
+    }
+
     public void setTransitions(Transition[] transitions) {
         this.transitions = transitions;
     }
