@@ -2,6 +2,7 @@ package tm;
 
 /**
  * @Author Shane Ball
+ * @Author Austin Andersen
  * CS 361 Fall 2023
  * Project 3
  *
@@ -13,34 +14,40 @@ public class Transition {
     private int writeSymbol; // Stores the symbol that will be written to the tape if the transition is taken
     private char move; // Stores the direction the head will move over the tape if the transition is taken
 
+    /**
+     * Initialize a Transition with all the properties that will be provided in the .txt files
+     * @param next int value of the next state
+     * @param write int value to write to tape
+     * @param move char of direction to move on tape
+     */
     public Transition(int next, int write, char move) {
         this.nextState = next;
         this.writeSymbol = write;
         this.move = move;
     }
 
+    /**
+     * Get the int value of the next State that will be reached if the transition is taken
+     * @return int
+     */
     public int getNextState() {
         return nextState;
     }
 
-    public void setNextState(int nextState) {
-        this.nextState = nextState;
-    }
-
+    /**
+     * Get the symbol that will be written to the tape if the transition is taken
+     * @return int
+     */
     public int getWriteSymbol() {
         return writeSymbol;
     }
 
-    public void setWriteSymbol(int writeSymbol) {
-        this.writeSymbol = writeSymbol;
-    }
-
+    /**
+     * Return the character that designates what direction to move on the tape if taking the transition
+     * @return the 'R' or 'L' character in the Transition
+     */
     public char getMove() {
         return move;
-    }
-
-    public void setMove(char move) {
-        this.move = move;
     }
 
     @Override

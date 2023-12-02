@@ -2,6 +2,7 @@ package tm;
 
 /**
  * @Author Shane Ball
+ * @Author Austin Anderson
  * CS 361 Fall 2023
  * Project 3
  *
@@ -28,33 +29,36 @@ public class ParseObject {
         inputString = "";
     }
 
+    /**
+     * Get the number of states that should be in the Turing machine according to the file
+     * @return int
+     */
     public int getNumberOfStates() {
         return numberOfStates;
     }
 
+    /**
+     * Set the number of states int value stored in the ParseObject
+     * @param numberOfStates
+     */
     public void setNumberOfStates(int numberOfStates) {
         this.numberOfStates = numberOfStates;
     }
 
-    public int getSigma() {
-        return sigma;
-    }
-
+    /**
+     * Set the sigma int value stored in the ParseObject
+     * @param sigma
+     */
     public void setSigma(int sigma) {
         this.sigma = sigma;
     }
 
+    /**
+     * Get the array of transitions from the ParseObject
+     * @return Transition[]
+     */
     public Transition[] getTransitions() {
         return transitions;
-    }
-
-    /**
-     * Get the transition at the provided index in the transitions array
-     * @param index
-     * @return Transition
-     */
-    public Transition getTransitionAtIndex(int index) {
-        return transitions[index];
     }
 
     /**
@@ -81,10 +85,6 @@ public class ParseObject {
         return returnTransitions;
     }
 
-    public void setTransitions(Transition[] transitions) {
-        this.transitions = transitions;
-    }
-
     /**
      * Adds a transition into the first empty space in the transitions array.
      * Used by tm.FileParser as it creates the complete ParseObject
@@ -99,10 +99,18 @@ public class ParseObject {
         }
     }
 
+    /**
+     * Get the inputString stored in the ParseObject
+     * @return String
+     */
     public String getInputString() {
         return inputString;
     }
 
+    /**
+     * Set the inputString of the ParseObject
+     * @param inputString
+     */
     public void setInputString(String inputString) {
         this.inputString = inputString;
     }
@@ -110,7 +118,7 @@ public class ParseObject {
     @Override
     /**
      * Creates a string representation of the parse object with labels. If the labels are removed, the output should
-     * exactly match the parsed .txt file
+     * exactly match the parsed .txt file. Used for testing if the parseObject is created correctly.
      */
     public String toString() {
         String returnString = "Number of states: " + numberOfStates + "\n";

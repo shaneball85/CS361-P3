@@ -10,8 +10,10 @@ import java.util.stream.Stream;
 
 /**
  * @Author Shane Ball
+ * @Author Austin Andersen
  * CS 361 Fall 2023
  * Project 3
+ *
  * FileParser is an object that holds the file path of the text file with the instructions for the turing machine.
  * The parseFile() method scans through a .txt of a specific format per the project 3 instructions. First it scans to
  * count the number of lines with a comma. Then it scans one more time and converts each line of the file to the
