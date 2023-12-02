@@ -1,7 +1,10 @@
 package tm;
 
 /**
-  * @author Shane Ball, Austin Andersen
+  * @author Shane Ball
+  * @author Austin Andersen
+  * CS 361 Fall 2023
+  * Project 3
   *
   * This is the driver class for the touring machine project and takes a single command line argument for a text file, which pulls
   * elements from the text file and uses them to create a touring machine, printing out the results
