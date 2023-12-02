@@ -69,11 +69,45 @@ public class TouringMachine {
         System.out.println("Machine created"); // Remove after testing complete
     }
 
+    /**
+     * Get the int stored in the tape at the current index of the headPointer. The int that is read from the
+     * tap is also the index in the current state's Transition[] of the transition that needs to be taken. This is
+     * a helper method for the takeTransition() method.
+     * @return the transition to be taken given the current state and current location of the headPointer
+     */
+    private Transition chooseTransition() {
+        return states[statePointer].getTransitionAtIndex(tape.get(headPointer));
+    }
 
-//    private Transition chooseTransition() {
-//    }
+    /**
+     * Takes the next transition in the TouringMachine and updates all the attributes of the machine accordingly
+     */
+    public void takeTransition() {
+        // Get the transition that will be taken
+        Transition chosenTransition = chooseTransition();
+        // Update the state pointer to the next state based on the transition
+        statePointer = chosenTransition.getNextState();
+        // Write to the tape at the current location of headPointer based on the instructions of the current transition
+        tape.set(headPointer, chosenTransition.getWriteSymbol());
 
-    private void takeTransition() {
+        // Update the location of the head pointer on the tape +1 if move (R)ight else -1 for (L)eft
+        if (chosenTransition.getWriteSymbol() == 'R') {
+            headPointer += 1;
+        } else {
+            headPointer -= 1;
+        }
+
+        // Check if the headPointer has gone beyond the last index of the tape and if so, add a blank to the
+        // tape
+        if (headPointer > tape.size() - 1) {
+            tape.add(0);
+        }
+        // If the headPointer moves left it can move past index 0 of the tape. If it does add a new blank at the
+        // beginning of the tape and have headPointer point to it
+        if (headPointer == -1) {
+            tape.add(0, 0);
+            headPointer = 0;
+        }
     }
 
     public String getInputString() {
