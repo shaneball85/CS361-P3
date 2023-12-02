@@ -22,18 +22,18 @@ file2.txt<br>
 file5.txt</p>
 
 ## How to run
-To run this project, you must first make sure the project is compiled via the following command:
-javac TMSimulator.java
+<p>To run this project, you must first make sure the project is compiled via the following command:<br>
+javac TMSimulator.java<br>
 
-Then type in the following:
-java TMSimulator.java [file_path]
-where [file_path] is the path to a text file matching the correct format
+<br>Then type in the following:<br>
+java TMSimulator.java [file_path]<br>
+where [file_path] is the path to a text file matching the correct format</p>
 
 ## File format
-In order to avoid errors, a given file must have the following format:
-[number of states]
-[number of alphabet characters]
-[transitions]
-[optional input string]
+<p>In order to avoid errors, a given file must have the following format:<br>
+[number of states]<br>
+[number of alphabet characters]<br>
+[transitions]<br>
+[optional input string]<br>
 
-Note: the number of transitions is equal to (number of states - 1) * (number of characters)
+<br>Note: the number of transitions is equal to (number of states - 1) * (number of characters)</p>
