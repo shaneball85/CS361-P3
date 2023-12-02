@@ -41,11 +41,11 @@ public class State {
     @Override
     public String toString() {
         String returnString = "";
-        for (int i = 0; i < transitions.length; i++) {
-            if (isFinal != true) {
+        if (isFinal) {
+            returnString += "Final state reached. No more transitions\n";
+        } else {
+            for (int i = 0; i < transitions.length; i++) {
                 returnString += "Transition " + (i + 1) + " is " + transitions[i] + "\n";
-            } else {
-                returnString += "Final state reached. No more transitions\n";
             }
         }
         return returnString;
